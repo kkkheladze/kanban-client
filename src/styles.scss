@@ -2,9 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+$background-color: #21212cff;
+
 html,
 body {
   height: 100%;
+  background-color: $background-color;
 }
 body {
   margin: 0;
