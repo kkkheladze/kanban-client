@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { shareReplay, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
-import { LoginResponse } from '../../models/http.interface';
+import { LoginResponse } from '../models/http.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({

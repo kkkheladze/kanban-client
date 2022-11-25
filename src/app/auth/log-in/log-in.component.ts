@@ -7,26 +7,37 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-log-in',
+  selector: 'kb-login',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
 })
 export class LogInComponent implements OnInit {
-  formGroup!: FormGroup;
-  hidePassword: boolean = true;
+  header: string = 'Log In';
+  loginForm!: FormGroup;
 
   constructor(private fb: NonNullableFormBuilder) {}
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
+    this.initForm();
+  }
+
+  initForm() {
+    this.loginForm = this.fb.group({
+      email: new FormControl('', [
+        Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
+        Validators.required,
+      ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(8),
+        Validators.pattern(
+          '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'
+        ),
       ]),
     });
   }
-  onSumbit() {
-    console.log(this.formGroup.value);
+
+  login() {
+    console.log(this.loginForm.value);
   }
 }

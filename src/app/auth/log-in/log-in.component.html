@@ -1,0 +1,36 @@
+<div
+  class="bg-transparent min-h-screen w-screen flex justify-center items-center"
+>
+  <kb-card [header]="header" class="w-11/12 max-w-xl">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+      class="flex flex-col gap-8 content-center"
+    >
+      <kb-input
+        formControlName="email"
+        type="email"
+        [abstractFormControl]="loginForm.get('email')!"
+      ></kb-input>
+      <kb-input
+        formControlName="password"
+        type="password"
+        [abstractFormControl]="loginForm.get('password')!"
+      ></kb-input>
+      <button
+        class="self-center w-fit bg-light-background hover:bg-accent transition-all px-12 py-3 border-accent rounded-l"
+      >
+        Login
+      </button>
+      <div class="text-center">
+        Don't have an account?
+        <span
+          class="hover:underline cursor-pointer hover:text-accent"
+          routerLink="/auth/signup"
+        >
+          Sign Up
+        </span>
+      </div>
+    </form>
+  </kb-card>
+</div>
