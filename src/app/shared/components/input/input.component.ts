@@ -27,6 +27,7 @@ import {
 export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() abstractFormControl!: AbstractControl;
+  @Input() placeholder: string = '';
 
   public value: string = '';
 

@@ -8,11 +8,13 @@
       class="flex flex-col gap-8 content-center"
     >
       <kb-input
+        placeholder="Email"
         formControlName="email"
         type="email"
         [abstractFormControl]="loginForm.get('email')!"
       ></kb-input>
       <kb-input
+        placeholder="Password"
         formControlName="password"
         type="password"
         [abstractFormControl]="loginForm.get('password')!"

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanLoad {
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
   canLoad(
     route: Route,
     segments: UrlSegment[]
@@ -15,8 +16,11 @@ export class AuthGuard implements CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // TODO: Implement auth logic
-    // return this.router.parseUrl('/auth/login');
-    return true;
+    const isLoggedIn = this.authService.isLoggedIn();
+    if (!isLoggedIn) {
+      this.router.navigate(['/auth/login']);
+      return false;
+    }
+    return isLoggedIn;
   }
 }

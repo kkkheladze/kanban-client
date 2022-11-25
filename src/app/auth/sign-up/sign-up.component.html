@@ -1,1 +1,50 @@
-<p>sign-up works!</p>
+<div
+  class="bg-transparent min-h-screen w-screen flex justify-center items-center"
+>
+  <kb-card [header]="header" class="w-11/12 max-w-xl">
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="signup()"
+      class="flex flex-col gap-8 content-center"
+    >
+      <kb-input
+        placeholder="First Name"
+        formControlName="first_name"
+        type="text"
+        [abstractFormControl]="signupForm.get('first_name')!"
+      ></kb-input>
+      <kb-input
+        placeholder="Last Name"
+        formControlName="last_name"
+        type="text"
+        [abstractFormControl]="signupForm.get('last_name')!"
+      ></kb-input>
+      <kb-input
+        placeholder="Email"
+        formControlName="email"
+        type="email"
+        [abstractFormControl]="signupForm.get('email')!"
+      ></kb-input>
+      <kb-input
+        placeholder="Password"
+        formControlName="password"
+        type="password"
+        [abstractFormControl]="signupForm.get('password')!"
+      ></kb-input>
+      <button
+        class="self-center w-fit bg-light-background hover:bg-accent transition-all px-12 py-3 border-accent rounded-l"
+      >
+        Sign Up
+      </button>
+      <div class="text-center">
+        Already have an account?
+        <span
+          class="hover:underline cursor-pointer hover:text-accent"
+          routerLink="/auth/login"
+        >
+          Log In
+        </span>
+      </div>
+    </form>
+  </kb-card>
+</div>
