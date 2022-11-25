@@ -14,7 +14,6 @@ import {
 @Component({
   selector: 'kb-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -24,7 +23,7 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent implements OnInit, ControlValueAccessor {
+export class InputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() abstractFormControl!: AbstractControl;
   @Input() placeholder: string = '';
@@ -36,10 +35,6 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   public touched!: (value: string) => void;
 
   public isDisabled: boolean = false;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   get formControl(): FormControl {
     return this.abstractFormControl as FormControl;

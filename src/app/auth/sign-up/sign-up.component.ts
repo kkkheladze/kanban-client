@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'kb-signup',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent implements OnInit {
@@ -25,6 +24,10 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
     this.signupForm = this.fb.group({
       first_name: new FormControl('', [Validators.required]),
       last_name: new FormControl('', [Validators.required]),
@@ -44,6 +47,7 @@ export class SignUpComponent implements OnInit {
 
   signup() {
     const { first_name, last_name, email, password } = this.signupForm.value;
+    if (!(first_name && last_name && email && password)) return;
     this.authService
       .register(first_name, last_name, email, password)
       .subscribe({

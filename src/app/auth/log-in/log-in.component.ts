@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'kb-login',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogInComponent implements OnInit {
@@ -34,18 +33,13 @@ export class LogInComponent implements OnInit {
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
         Validators.required,
       ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.pattern(
-          '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'
-        ),
-      ]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   login() {
     const { email, password } = this.loginForm.value;
+    if (!email && !password) return;
     this.authService.login(email, password).subscribe({
       next: () => this.router.navigate(['/dashboard']),
       error: console.log,

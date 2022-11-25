@@ -19,11 +19,11 @@
         type="password"
         [abstractFormControl]="loginForm.get('password')!"
       ></kb-input>
-      <button
-        class="self-center w-fit bg-light-background hover:bg-accent transition-all px-12 py-3 border-accent rounded-l"
-      >
-        Login
-      </button>
+      <kb-button
+        [disabled]="loginForm.invalid"
+        [label]="'Log In'"
+        class="self-center"
+      ></kb-button>
       <div class="text-center">
         Don't have an account?
         <span

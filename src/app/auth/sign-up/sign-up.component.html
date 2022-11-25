@@ -31,11 +31,11 @@
         type="password"
         [abstractFormControl]="signupForm.get('password')!"
       ></kb-input>
-      <button
-        class="self-center w-fit bg-light-background hover:bg-accent transition-all px-12 py-3 border-accent rounded-l"
-      >
-        Sign Up
-      </button>
+      <kb-button
+        [disabled]="signupForm.invalid"
+        [label]="'Sign Up'"
+        class="self-center"
+      ></kb-button>
       <div class="text-center">
         Already have an account?
         <span

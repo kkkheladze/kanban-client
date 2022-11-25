@@ -3,12 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { shareReplay, tap } from 'rxjs';
 import { LoginResponse } from '../models/http.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, public jwt: JwtHelperService) {}
+  constructor(
+    private http: HttpClient,
+    public jwt: JwtHelperService,
+    private router: Router
+  ) {}
 
   login(email: string, password: string) {
     return this.http
@@ -41,6 +46,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('expires_at');
+    this.router.navigate(['/auth/login']);
   }
 
   private setSession(authResult: LoginResponse) {
