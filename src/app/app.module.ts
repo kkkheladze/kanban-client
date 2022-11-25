@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './auth/log-in/log-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { environment } from '../environments/environment';
+import { InputComponent } from './shared/components/input/input.component';
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, SignUpComponent],
+  declarations: [AppComponent, LogInComponent, SignUpComponent, InputComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
